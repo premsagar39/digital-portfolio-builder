@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Phone, Mail, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aboutProfile from "@/assets/about-profile.jpg";
 
@@ -20,22 +19,21 @@ const AboutSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            About <span className="text-gradient">Me</span>
+            About <span className="text-primary">Me</span>
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Visual Element */}
+        <div className="flex flex-col items-center gap-12 max-w-4xl mx-auto">
+          {/* Profile Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex justify-center"
+            className="flex justify-center"
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/30 rotate-6" />
-              <div className="absolute inset-0 rounded-2xl bg-card border border-border overflow-hidden">
+            <div className="relative">
+              <div className="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden border-2 border-primary/50">
                 <img 
                   src={aboutProfile} 
                   alt="Singara Premsagar" 
@@ -45,52 +43,33 @@ const AboutSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Content */}
+          {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center"
           >
-            <h3 className="font-display text-2xl md:text-3xl font-semibold mb-4">
-              Aspiring <span className="text-primary">Data Analyst</span>
+            <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-6">
+              Data Analyst
             </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Detail-oriented Computer Science student with strong hands-on experience in 
-              SQL, Python, Power BI, Tableau, and Excel. Specialized in data cleaning, 
-              exploratory data analysis (EDA), ETL processes, KPI reporting, dashboard 
-              development, and business intelligence.
+            <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+              I am a Computer Science student with strong hands-on experience in 
+              SQL, Python, Power BI, Tableau and Excel. I specialize in data cleaning, 
+              exploratory data analysis (EDA), ETL processes, KPI reporting, and 
+              dashboard development.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Proven ability to analyze large datasets, uncover trends, and deliver 
-              actionable insights and recommendations to support data-driven decision-making 
-              and stakeholder reporting across multiple business domains.
+            <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+              I have proven ability to analyze large datasets, uncover trends, and 
+              deliver actionable insights to support data-driven decision-making 
+              across multiple business domains.
             </p>
-
-            {/* Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border">
-                <MapPin className="text-primary" size={20} />
-                <span className="text-sm text-muted-foreground">Gooty, Andhra Pradesh</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border">
-                <Phone className="text-primary" size={20} />
-                <span className="text-sm text-muted-foreground">+91-7671095518</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border">
-                <Mail className="text-primary" size={20} />
-                <span className="text-sm text-muted-foreground truncate">premsagarsingara39@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border">
-                <GraduationCap className="text-primary" size={20} />
-                <span className="text-sm text-muted-foreground">B.Tech CSE (Data Science)</span>
-              </div>
-            </div>
 
             <Button
               asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full px-8 transition-all duration-300"
             >
-              <a href="#skills">View My Skills</a>
+              <a href="#skills">Know My Skills</a>
             </Button>
           </motion.div>
         </div>

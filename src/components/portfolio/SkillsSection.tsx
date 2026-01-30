@@ -1,33 +1,31 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useRef, useState } from "react";
+import { 
+  Code, Database, Table, Calculator, BarChart3, PieChart, 
+  LineChart, FileSpreadsheet, Search, TrendingUp, Sparkles, 
+  Settings, Filter, Gauge, Brain, FileCode
+} from "lucide-react";
 
-const skills = {
-  programming: [
-    { name: "Python", level: 85 },
-    { name: "SQL (MySQL)", level: 90 },
-    { name: "DAX", level: 75 },
-  ],
-  libraries: [
-    { name: "Pandas", level: 85 },
-    { name: "NumPy", level: 80 },
-    { name: "Matplotlib", level: 75 },
-    { name: "Seaborn", level: 70 },
-  ],
-  visualization: [
-    { name: "Power BI", level: 90 },
-    { name: "Tableau", level: 85 },
-    { name: "Excel", level: 90 },
-    { name: "Power Query", level: 85 },
-  ],
-  analysis: [
-    { name: "EDA", level: 90 },
-    { name: "Data Cleaning", level: 90 },
-    { name: "Statistical Analysis", level: 80 },
-    { name: "KPI Reporting", level: 85 },
-  ],
-};
+const skills = [
+  { name: "Python", icon: Code },
+  { name: "SQL (MySQL)", icon: Database },
+  { name: "Pandas", icon: Table },
+  { name: "NumPy", icon: Calculator },
+  { name: "Matplotlib", icon: BarChart3 },
+  { name: "Power BI", icon: PieChart },
+  { name: "Tableau", icon: LineChart },
+  { name: "Excel", icon: FileSpreadsheet },
+  { name: "EDA", icon: Search },
+  { name: "Statistical Analysis", icon: TrendingUp },
+  { name: "Data Cleaning", icon: Sparkles },
+  { name: "ETL Processes", icon: Settings },
+  { name: "KPI Reporting", icon: Gauge },
+  { name: "Dashboard Development", icon: Gauge },
+  { name: "Business Intelligence", icon: Brain },
+  { name: "DAX", icon: FileCode },
+  { name: "Power Query", icon: Filter },
+];
 
 const education = [
   {
@@ -51,36 +49,32 @@ const education = [
 ];
 
 const certifications = [
-  "Data Analytics Certification – GrowAI (2025)",
-  "Data Analyst Bootcamp – Udemy (2025)",
-  "Oracle Analytics Cloud 2025 Certified Professional",
+  {
+    title: "Oracle Analytics Cloud 2025 Certified Professional",
+    description: "Skilled in dashboarding, KPI analysis, data modeling, and cloud-based business intelligence.",
+  },
+  {
+    title: "Data Analytics Certification",
+    description: "GrowAI (2025)",
+  },
+  {
+    title: "Data Analyst Bootcamp",
+    description: "Udemy (2025)",
+  },
 ];
+
+type TabType = "skills" | "education" | "certifications";
 
 const SkillsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeTab, setActiveTab] = useState<TabType>("skills");
 
-  const SkillBar = ({ name, level, index }: { name: string; level: number; index: number }) => (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="mb-4"
-    >
-      <div className="flex justify-between mb-2">
-        <span className="text-foreground font-medium">{name}</span>
-        <span className="text-primary">{level}%</span>
-      </div>
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${level}%` } : {}}
-          transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-          className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full"
-        />
-      </div>
-    </motion.div>
-  );
+  const tabs: { id: TabType; label: string }[] = [
+    { id: "skills", label: "Skills" },
+    { id: "education", label: "Education" },
+    { id: "certifications", label: "Certifications" },
+  ];
 
   return (
     <section id="skills" className="py-20 md:py-32 bg-card/50 relative">
@@ -93,91 +87,112 @@ const SkillsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            My <span className="text-gradient">Expertise</span>
+            My <span className="text-primary">Expertise</span>
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <Tabs defaultValue="skills" className="max-w-4xl mx-auto">
-          <TabsList className="grid grid-cols-3 mb-12 bg-muted/50">
-            <TabsTrigger value="skills" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              Skills
-            </TabsTrigger>
-            <TabsTrigger value="education" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              Education
-            </TabsTrigger>
-            <TabsTrigger value="certifications" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              Certifications
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="skills">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-primary font-display text-lg font-semibold mb-6">Programming & Databases</h3>
-                {skills.programming.map((skill, index) => (
-                  <SkillBar key={skill.name} {...skill} index={index} />
-                ))}
-                <h3 className="text-primary font-display text-lg font-semibold mb-6 mt-8">Python Libraries</h3>
-                {skills.libraries.map((skill, index) => (
-                  <SkillBar key={skill.name} {...skill} index={index} />
-                ))}
-              </div>
-              <div>
-                <h3 className="text-primary font-display text-lg font-semibold mb-6">BI & Visualization</h3>
-                {skills.visualization.map((skill, index) => (
-                  <SkillBar key={skill.name} {...skill} index={index} />
-                ))}
-                <h3 className="text-primary font-display text-lg font-semibold mb-6 mt-8">Data Analysis</h3>
-                {skills.analysis.map((skill, index) => (
-                  <SkillBar key={skill.name} {...skill} index={index} />
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="education">
-            <div className="space-y-6">
-              {education.map((edu, index) => (
+        {/* Tab Navigation */}
+        <div className="flex justify-center gap-4 md:gap-8 mb-12 flex-wrap">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative text-lg font-semibold transition-colors pb-2 ${
+                activeTab === tab.id 
+                  ? "text-primary" 
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {tab.label}
+              {activeTab === tab.id && (
                 <motion.div
-                  key={edu.degree}
+                  layoutId="activeTab"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills Tab */}
+        {activeTab === "skills" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto"
+          >
+            {skills.map((skill, index) => {
+              const IconComponent = skill.icon;
+              return (
+                <motion.div
+                  key={skill.name}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  whileHover={{ y: -5, backgroundColor: "hsl(var(--primary) / 0.1)" }}
+                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm cursor-default transition-all"
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                    <div>
-                      <h4 className="font-display text-lg font-semibold text-foreground">{edu.degree}</h4>
-                      <p className="text-muted-foreground">{edu.institution}</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-primary font-medium">{edu.score}</span>
-                      <p className="text-sm text-muted-foreground">{edu.year}</p>
-                    </div>
-                  </div>
+                  <IconComponent size={18} className="text-secondary" />
+                  <span className="text-foreground font-medium">{skill.name}</span>
                 </motion.div>
-              ))}
-            </div>
-          </TabsContent>
+              );
+            })}
+          </motion.div>
+        )}
 
-          <TabsContent value="certifications">
-            <div className="space-y-4">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={cert}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors flex items-center gap-4"
-                >
-                  <div className="w-3 h-3 rounded-full bg-primary" />
-                  <span className="text-foreground">{cert}</span>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+        {/* Education Tab */}
+        {activeTab === "education" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid gap-6 max-w-2xl mx-auto"
+          >
+            {education.map((edu, index) => (
+              <motion.div
+                key={edu.degree}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5, borderColor: "hsl(var(--primary))" }}
+                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all"
+              >
+                <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+                  {edu.year}
+                </span>
+                <h4 className="font-display text-xl font-semibold text-primary mb-2">{edu.degree}</h4>
+                <p className="text-muted-foreground mb-2">{edu.institution}</p>
+                <p className="text-foreground font-medium">{edu.score}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Certifications Tab */}
+        {activeTab === "certifications" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid gap-6 max-w-2xl mx-auto"
+          >
+            {certifications.map((cert, index) => (
+              <motion.div
+                key={cert.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5, borderColor: "hsl(var(--primary))" }}
+                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all"
+              >
+                <h4 className="font-display text-lg font-semibold text-primary mb-2">{cert.title}</h4>
+                <p className="text-muted-foreground">{cert.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

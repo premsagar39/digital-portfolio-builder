@@ -7,25 +7,21 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "premsagarsingara39@gmail.com",
     href: "mailto:premsagarsingara39@gmail.com",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "linkedin.com/in/premsagar123",
     href: "https://linkedin.com/in/premsagar123",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/premsagar39",
     href: "https://github.com/premsagar39",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91-7671095518",
     href: "tel:+917671095518",
   },
 ];
@@ -45,16 +41,33 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            Get in <span className="text-gradient">Touch</span>
+            Get in <span className="text-primary">Touch</span>
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6" />
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            Currently open for opportunities in Data Analytics and Business Intelligence. 
+          <p className="text-muted-foreground max-w-lg mx-auto mb-8">
+            Currently open for opportunities in Data Analysis and Business Intelligence. 
             Feel free to connect with me through any of the platforms below!
           </p>
+
+          {/* Contact Info */}
+          <div className="flex flex-col items-center gap-3 mb-12 text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <MapPin size={18} className="text-primary" />
+              <span>Gooty, Andhra Pradesh, India</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone size={18} className="text-primary" />
+              <span>+91-7671095518</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail size={18} className="text-primary" />
+              <span>premsagarsingara39@gmail.com</span>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+        {/* Social Buttons */}
+        <div className="flex flex-wrap justify-center gap-8">
           {contactLinks.map((link, index) => {
             const Icon = link.icon;
             return (
@@ -66,25 +79,18 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px hsl(187 85% 53% / 0.3)" }}
-                className="w-20 h-20 rounded-full border-2 border-primary/50 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                whileHover={{ 
+                  y: -10, 
+                  backgroundColor: "hsl(var(--primary))",
+                  color: "hsl(var(--primary-foreground))",
+                }}
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-primary flex items-center justify-center text-primary bg-card/50 backdrop-blur-sm transition-all duration-300"
               >
                 <Icon size={28} />
               </motion.a>
             );
           })}
         </div>
-
-        {/* Location */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex items-center justify-center gap-2 mt-12 text-muted-foreground"
-        >
-          <MapPin size={18} className="text-primary" />
-          <span>Gooty, Andhra Pradesh, India</span>
-        </motion.div>
       </div>
     </section>
   );
