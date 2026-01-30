@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Phone, Mail, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -34,15 +35,12 @@ const AboutSection = () => {
           >
             <div className="relative w-72 h-72 md:w-96 md:h-96">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/30 rotate-6" />
-              <div className="absolute inset-0 rounded-2xl bg-card border border-border flex items-center justify-center">
-                <div className="text-center p-8">
-                  <span className="font-display text-5xl md:text-6xl text-gradient font-bold block mb-4">
-                    SP
-                  </span>
-                  <p className="text-muted-foreground text-sm">
-                    Data Analyst
-                  </p>
-                </div>
+              <div className="absolute inset-0 rounded-2xl bg-card border border-border overflow-hidden">
+                <img 
+                  src={profilePhoto} 
+                  alt="Singara Premsagar" 
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
           </motion.div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
   return (
@@ -122,12 +123,12 @@ const HeroSection = () => {
             className="flex-1 flex justify-center"
           >
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center animate-float">
-                <div className="w-56 h-56 md:w-72 md:h-72 rounded-full bg-card border border-border flex items-center justify-center">
-                  <span className="font-display text-6xl md:text-7xl text-gradient font-bold">
-                    SP
-                  </span>
-                </div>
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center animate-float p-1">
+                <img 
+                  src={profilePhoto} 
+                  alt="Singara Premsagar" 
+                  className="w-full h-full rounded-full object-cover object-top"
+                />
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/30 rounded-full blur-sm" />
