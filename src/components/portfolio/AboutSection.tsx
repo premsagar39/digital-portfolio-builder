@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Phone, Mail, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import aboutProfile from "@/assets/about-profile.jpg";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -37,7 +37,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/30 rotate-6" />
               <div className="absolute inset-0 rounded-2xl bg-card border border-border overflow-hidden">
                 <img 
-                  src={profilePhoto} 
+                  src={aboutProfile} 
                   alt="Singara Premsagar" 
                   className="w-full h-full object-cover object-top"
                 />

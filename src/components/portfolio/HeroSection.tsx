@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import heroProfile from "@/assets/hero-profile.png";
 
 const HeroSection = () => {
   return (
@@ -125,7 +125,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center animate-float p-1">
                 <img 
-                  src={profilePhoto} 
+                  src={heroProfile} 
                   alt="Singara Premsagar" 
                   className="w-full h-full rounded-full object-cover object-top"
                 />
