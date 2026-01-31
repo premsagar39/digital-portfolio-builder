@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { 
   Code, Database, Table, Calculator, BarChart3, PieChart, 
   LineChart, FileSpreadsheet, Search, TrendingUp, Sparkles, 
-  Settings, Filter, Gauge, Brain, FileCode
+  Settings, Filter, Gauge, Brain, FileCode, ExternalLink
 } from "lucide-react";
 
 const skills = [
@@ -52,14 +52,17 @@ const certifications = [
   {
     title: "Oracle Analytics Cloud 2025 Certified Professional",
     description: "Skilled in dashboarding, KPI analysis, data modeling, and cloud-based business intelligence.",
+    certificateUrl: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=323251959OCIEA25OCP",
   },
   {
     title: "Data Analytics Certification",
-    description: "GrowAI (2025)",
+    description: "GrowAI - 3 Month Data Analysis Course (March 2025)",
+    certificateUrl: "https://www.growaiedtech.com/verify",
   },
   {
     title: "Data Analyst Bootcamp",
-    description: "Udemy (2025)",
+    description: "Udemy - The Complete Data Analyst Bootcamp (Sept 2025)",
+    certificateUrl: "https://ude.my/UC-5862cff0-8b3e-4246-b12a-5b3e0f9ae5bf",
   },
 ];
 
@@ -179,17 +182,23 @@ const SkillsSection = () => {
             className="grid gap-6 max-w-2xl mx-auto"
           >
             {certifications.map((cert, index) => (
-              <motion.div
+              <motion.a
                 key={cert.title}
+                href={cert.certificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, borderColor: "hsl(var(--primary))" }}
-                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all"
+                className="block p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all group cursor-pointer"
               >
-                <h4 className="font-display text-lg font-semibold text-primary mb-2">{cert.title}</h4>
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <h4 className="font-display text-lg font-semibold text-primary">{cert.title}</h4>
+                  <ExternalLink size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
                 <p className="text-muted-foreground">{cert.description}</p>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
         )}
