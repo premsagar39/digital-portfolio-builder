@@ -51,7 +51,7 @@ const AboutSection = () => {
             className="text-center"
           >
             <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-6">
-              Data Analyst
+              Aspiring Data Analyst
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
               I am a Computer Science student with strong hands-on experience in 
