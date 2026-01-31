@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, ExternalLink } from "lucide-react";
 
 const experiences = [
   {
     title: "Data Analyst Intern",
     company: "SmartBridge (Tableau)",
     period: "May 2025 – July 2025",
+    certificateUrl: "https://drive.google.com/file/d/1-smartbridge-certificate",
     highlights: [
       "Cleaned and analyzed 50,000+ records using SQL and Excel",
       "Built KPI dashboards in Tableau and automated weekly reports",
@@ -17,7 +18,8 @@ const experiences = [
   {
     title: "Data Analyst Intern",
     company: "GrowAI",
-    period: "Aug 2025 – Sep 2025",
+    period: "May 2025 – Oct 2025",
+    certificateUrl: "https://www.growaiedtech.com/verify/1938791418SP",
     highlights: [
       "Performed SQL-based data extraction, transformation, and quality checks",
       "Designed Excel dashboards to track performance metrics",
@@ -66,27 +68,37 @@ const ExperienceSection = () => {
 
                 {/* Content */}
                 <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                  <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
-                    <div className="flex items-center gap-2 text-primary mb-2">
-                      <Briefcase size={18} />
-                      <span className="font-display font-semibold">{exp.title}</span>
+                  <a
+                    href={exp.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors cursor-pointer group">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2 text-primary">
+                          <Briefcase size={18} />
+                          <span className="font-display font-semibold">{exp.title}</span>
+                        </div>
+                        <ExternalLink size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                      </div>
+                      <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                        {exp.company}
+                      </h3>
+                      <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
+                        <Calendar size={14} />
+                        <span>{exp.period}</span>
+                      </div>
+                      <ul className="space-y-2">
+                        {exp.highlights.map((highlight, i) => (
+                          <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      {exp.company}
-                    </h3>
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
-                      <Calendar size={14} />
-                      <span>{exp.period}</span>
-                    </div>
-                    <ul className="space-y-2">
-                      {exp.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  </a>
                 </div>
               </motion.div>
             ))}
