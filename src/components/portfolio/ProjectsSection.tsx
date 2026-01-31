@@ -10,7 +10,7 @@ const projects = [
     tools: ["Power BI", "DAX", "Power Query"],
     achievement: "Increased insight accuracy by 30%",
     icon: BarChart3,
-    githubUrl: "https://github.com/premsagar39/zomato-restaurant-analysis",
+    githubUrl: "https://github.com/premsagar39/zomato-restaurant-analysis-powerbi",
   },
   {
     title: "E-commerce Sales Analysis using MySQL",
@@ -18,7 +18,7 @@ const projects = [
     tools: ["MySQL", "Excel", "SQL"],
     achievement: "Analyzed SuperStoreUS-2015 dataset",
     icon: Database,
-    githubUrl: "https://github.com/premsagar39/ecommerce-sales-analysis",
+    githubUrl: "https://github.com/premsagar39/mysql-superstore-sales-analysis",
   },
   {
     title: "Customer Churn Analysis",
@@ -26,7 +26,7 @@ const projects = [
     tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
     achievement: "Insights to reduce churn by 10-15%",
     icon: Users,
-    githubUrl: "https://github.com/premsagar39/customer-churn-analysis",
+    githubUrl: "https://github.com/premsagar39/telecom-Customer-Churn-Analysis",
   },
 ];
 
