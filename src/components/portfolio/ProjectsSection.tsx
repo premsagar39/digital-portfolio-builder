@@ -10,6 +10,7 @@ const projects = [
     tools: ["Power BI", "DAX", "Power Query"],
     achievement: "Increased insight accuracy by 30%",
     icon: BarChart3,
+    githubUrl: "https://github.com/premsagar39/zomato-restaurant-analysis",
   },
   {
     title: "E-commerce Sales Analysis using MySQL",
@@ -17,6 +18,7 @@ const projects = [
     tools: ["MySQL", "Excel", "SQL"],
     achievement: "Analyzed SuperStoreUS-2015 dataset",
     icon: Database,
+    githubUrl: "https://github.com/premsagar39/ecommerce-sales-analysis",
   },
   {
     title: "Customer Churn Analysis",
@@ -24,6 +26,7 @@ const projects = [
     tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
     achievement: "Insights to reduce churn by 10-15%",
     icon: Users,
+    githubUrl: "https://github.com/premsagar39/customer-churn-analysis",
   },
 ];
 
@@ -58,43 +61,50 @@ const ProjectsSection = () => {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="group"
               >
-                <div className="h-full p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="text-primary" size={24} />
-                    </div>
-                    <motion.div
-                      whileHover={{ rotate: -45 }}
-                      className="text-muted-foreground group-hover:text-primary transition-colors"
-                    >
-                      <ExternalLink size={20} />
-                    </motion.div>
-                  </div>
-
-                  <h3 className="font-display text-lg font-semibold text-primary mb-3">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground"
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
+                  <div className="h-full p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col cursor-pointer">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Icon className="text-primary" size={24} />
+                      </div>
+                      <motion.div
+                        whileHover={{ rotate: -45 }}
+                        className="text-muted-foreground group-hover:text-primary transition-colors"
                       >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
+                        <ExternalLink size={20} />
+                      </motion.div>
+                    </div>
 
-                  <div className="flex items-center gap-2 text-sm">
-                    <TrendingUp size={16} className="text-primary" />
-                    <span className="text-primary font-medium">{project.achievement}</span>
+                    <h3 className="font-display text-lg font-semibold text-primary mb-3">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tools.map((tool) => (
+                        <span
+                          key={tool}
+                          className="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center gap-2 text-sm">
+                      <TrendingUp size={16} className="text-primary" />
+                      <span className="text-primary font-medium">{project.achievement}</span>
+                    </div>
                   </div>
-                </div>
+                </a>
               </motion.div>
             );
           })}
