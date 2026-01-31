@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Calendar, ExternalLink } from "lucide-react";
+import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
@@ -68,37 +68,27 @@ const ExperienceSection = () => {
 
                 {/* Content */}
                 <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                  <a
-                    href={exp.certificateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors cursor-pointer group">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2 text-primary">
-                          <Briefcase size={18} />
-                          <span className="font-display font-semibold">{exp.title}</span>
-                        </div>
-                        <ExternalLink size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                      </div>
-                      <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                        {exp.company}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
-                        <Calendar size={14} />
-                        <span>{exp.period}</span>
-                      </div>
-                      <ul className="space-y-2">
-                        {exp.highlights.map((highlight, i) => (
-                          <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                            {highlight}
-                          </li>
-                        ))}
-                      </ul>
+                  <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
+                    <div className="flex items-center gap-2 text-primary mb-2">
+                      <Briefcase size={18} />
+                      <span className="font-display font-semibold">{exp.title}</span>
                     </div>
-                  </a>
+                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                      {exp.company}
+                    </h3>
+                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
+                      <Calendar size={14} />
+                      <span>{exp.period}</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {exp.highlights.map((highlight, i) => (
+                        <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
             ))}

@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { 
   Code, Database, Table, Calculator, BarChart3, PieChart, 
   LineChart, FileSpreadsheet, Search, TrendingUp, Sparkles, 
-  Settings, Filter, Gauge, Brain, FileCode, ExternalLink
+  Settings, Filter, Gauge, Brain, FileCode
 } from "lucide-react";
 
 const skills = [
@@ -182,23 +182,17 @@ const SkillsSection = () => {
             className="grid gap-6 max-w-2xl mx-auto"
           >
             {certifications.map((cert, index) => (
-              <motion.a
+              <motion.div
                 key={cert.title}
-                href={cert.certificateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, borderColor: "hsl(var(--primary))" }}
-                className="block p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all group cursor-pointer"
+                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all"
               >
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <h4 className="font-display text-lg font-semibold text-primary">{cert.title}</h4>
-                  <ExternalLink size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
+                <h4 className="font-display text-lg font-semibold text-primary mb-2">{cert.title}</h4>
                 <p className="text-muted-foreground">{cert.description}</p>
-              </motion.a>
+              </motion.div>
             ))}
           </motion.div>
         )}
