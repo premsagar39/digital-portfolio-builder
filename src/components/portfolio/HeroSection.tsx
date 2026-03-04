@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroProfile from "@/assets/hero-profile.png";
 import { useState, useEffect } from "react";
@@ -120,6 +120,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
               <Button
                 asChild
@@ -127,6 +128,18 @@ const HeroSection = () => {
                 className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground glow-effect font-semibold px-8 rounded-full transition-all duration-300"
               >
                 <a href="#contact">Let's Connect</a>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="font-semibold px-8 rounded-full transition-all duration-300"
+              >
+                <a href="/resume/Premsagar_Resume_2026_3.docx" download>
+                  <Download />
+                  Download CV
+                </a>
               </Button>
             </motion.div>
           </motion.div>
