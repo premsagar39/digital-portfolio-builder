@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Linkedin, Github, Phone, MapPin } from "lucide-react";
+import { Mail, Linkedin, Github, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const contactLinks = [
   {
@@ -25,6 +26,9 @@ const contactLinks = [
     href: "tel:+917671095518",
   },
 ];
+
+const whatsappHref =
+  "https://wa.me/917671095518?text=Hi%20Premsagar%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect.";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -50,7 +54,7 @@ const ContactSection = () => {
           </p>
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center gap-3 mb-12 text-muted-foreground">
+          <div className="flex flex-col items-center gap-3 mb-8 text-muted-foreground">
             <div className="flex items-center gap-2">
               <MapPin size={18} className="text-primary" />
               <span>Gooty, Andhra Pradesh, India</span>
@@ -64,6 +68,17 @@ const ContactSection = () => {
               <span>premsagarsingara39@gmail.com</span>
             </div>
           </div>
+
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full px-8 font-semibold"
+          >
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+              <MessageCircle />
+              Message me on WhatsApp
+            </a>
+          </Button>
         </motion.div>
 
         {/* Social Buttons */}
