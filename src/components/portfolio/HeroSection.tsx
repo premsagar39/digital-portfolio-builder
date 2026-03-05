@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import heroProfile from "@/assets/hero-profile.png";
 import { useState, useEffect } from "react";
 
-const words = ["Power BI Developer", "Data Analyst", "SQL Expert", "Microsoft Excel Expert"];
+const words = ["Power BI Developer", "Data Analyst", "Business Analyst", "Finance Analyst", "MIS Executive"];
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
