@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -44,30 +45,34 @@ const Navbar = () => {
             Premsagar
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
-                whileHover={{ y: -2 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
+                  whileHover={{ y: -2 }}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </div>
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="text-foreground p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -95,3 +100,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
