@@ -14,6 +14,7 @@ const skills = [
   { name: "NumPy", icon: Calculator },
   { name: "Matplotlib", icon: BarChart3 },
   { name: "Power BI", icon: PieChart },
+  { name: "Plotly", icon: LineChart },
   { name: "Tableau", icon: LineChart },
   { name: "Excel", icon: FileSpreadsheet },
   { name: "EDA", icon: Search },
