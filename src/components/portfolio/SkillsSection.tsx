@@ -137,7 +137,7 @@ const SkillsSection = () => {
                   whileHover={{ y: -5, backgroundColor: "hsl(var(--primary) / 0.1)" }}
                   className="flex items-center gap-3 px-6 py-3 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm cursor-default transition-all"
                 >
-                  <IconComponent size={18} className="text-secondary" />
+                  <IconComponent size={18} className="text-primary" />
                   <span className="text-foreground font-medium">{skill.name}</span>
                 </motion.div>
               );
