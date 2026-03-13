@@ -61,6 +61,16 @@ const Navbar = () => {
                 </motion.a>
               ))}
             </div>
+            {canInstall && (
+              <Button
+                onClick={install}
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full font-semibold gap-1.5"
+              >
+                <Download size={14} />
+                Install App
+              </Button>
+            )}
             <ThemeToggle />
           </div>
 
