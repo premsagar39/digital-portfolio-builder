@@ -17,6 +17,7 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { canInstall, install } = usePwaInstall();
 
   useEffect(() => {
     const handleScroll = () => {
