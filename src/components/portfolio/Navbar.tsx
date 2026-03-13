@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { usePwaInstall } from "@/hooks/use-pwa-install";
+import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -15,6 +17,7 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { canInstall, install } = usePwaInstall();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,11 +61,30 @@ const Navbar = () => {
                 </motion.a>
               ))}
             </div>
+            {canInstall && (
+              <Button
+                onClick={install}
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full font-semibold gap-1.5"
+              >
+                <Download size={14} />
+                Install App
+              </Button>
+            )}
             <ThemeToggle />
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
+            {canInstall && (
+              <Button
+                onClick={install}
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full font-semibold gap-1.5 px-2"
+              >
+                <Download size={14} />
+              </Button>
+            )}
             <button
               className="text-foreground p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
