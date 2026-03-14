@@ -6,11 +6,12 @@ import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
-import InstallPrompt from "@/components/portfolio/InstallPrompt";
+import InstallCard from "@/components/portfolio/InstallCard";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <InstallCard />
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -19,7 +20,6 @@ const Index = () => {
       <ExperienceSection />
       <ContactSection />
       <Footer />
-      <InstallPrompt />
     </div>
   );
 };
