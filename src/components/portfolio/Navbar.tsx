@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
-import { usePwaInstall } from "@/hooks/use-pwa-install";
-import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { name: "Home", href: "#home" },
