@@ -6,6 +6,7 @@ import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
+import InstallPrompt from "@/components/portfolio/InstallPrompt";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <ExperienceSection />
       <ContactSection />
       <Footer />
+      <InstallPrompt />
     </div>
   );
 };
