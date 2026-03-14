@@ -64,15 +64,6 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
-            {canInstall && (
-              <Button
-                onClick={install}
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground rounded-full font-semibold gap-1.5 px-2"
-              >
-                <Download size={14} />
-              </Button>
-            )}
             <button
               className="text-foreground p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
