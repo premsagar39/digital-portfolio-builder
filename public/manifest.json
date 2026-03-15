@@ -7,7 +7,7 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#1a1a2e",
-  "orientation": "any",
+  "orientation": "portrait",
   "dir": "ltr",
   "lang": "en",
   "id": "/",
@@ -79,5 +79,12 @@
     }
   ],
   "related_applications": [],
-  "display_override": ["standalone", "window-controls-overlay"]
+  "display_override": ["standalone", "window-controls-overlay"],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
 }

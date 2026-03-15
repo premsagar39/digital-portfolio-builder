@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prem-portfolio-v3';
+const CACHE_NAME = 'prem-portfolio-v4';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
@@ -7,6 +7,8 @@ const STATIC_ASSETS = [
   '/screenshots/desktop-screenshot.png',
   '/screenshots/mobile-screenshot.png'
 ];
+
+const OFFLINE_PAGE = '/';
 
 // Install: cache static assets
 self.addEventListener('install', (event) => {
@@ -29,6 +31,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
 
+  if (request.method !== 'GET') return;
+
   // Navigation requests: network first, fallback to cache
   if (request.mode === 'navigate') {
     event.respondWith(
@@ -38,7 +42,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
           return response;
         })
-        .catch(() => caches.match('/') || new Response('Offline', { status: 503 }))
+        .catch(() => caches.match(OFFLINE_PAGE).then((r) => r || new Response('Offline', { status: 503, headers: { 'Content-Type': 'text/html' } })))
     );
     return;
   }
@@ -53,16 +57,52 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
         }
         return response;
+      }).catch(() => {
+        // Return offline fallback for images
+        if (request.destination === 'image') {
+          return new Response('', { status: 404 });
+        }
+        return new Response('Offline', { status: 503 });
       });
     })
   );
 });
 
-// Periodic sync (if supported)
+// Push notification support
+self.addEventListener('push', (event) => {
+  const data = event.data ? event.data.json() : { title: 'Prem Sagar Portfolio', body: 'New update available!' };
+  event.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: '/icons/icon-192x192.png',
+      badge: '/icons/icon-192x192.png',
+    })
+  );
+});
+
+// Notification click
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window' }).then((clients) => {
+      if (clients.length > 0) return clients[0].focus();
+      return self.clients.openWindow('/');
+    })
+  );
+});
+
+// Periodic sync
 self.addEventListener('periodicsync', (event) => {
   if (event.tag === 'update-cache') {
     event.waitUntil(
       caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
     );
+  }
+});
+
+// Background sync
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-data') {
+    event.waitUntil(Promise.resolve());
   }
 });
