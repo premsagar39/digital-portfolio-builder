@@ -33,7 +33,7 @@ const ExperienceSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-20 md:py-32 bg-card/50 relative">
+    <section id="experience" className="py-20 md:py-32 bg-card/50 relative" aria-label="Internship Experience">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
@@ -45,16 +45,15 @@ const ExperienceSection = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">Internships</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full" aria-hidden="true" />
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
+            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" aria-hidden="true" />
 
             {experiences.map((exp, index) => (
-              <motion.div
+              <motion.article
                 key={exp.company}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -63,34 +62,32 @@ const ExperienceSection = () => {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10" />
+                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10" aria-hidden="true" />
 
-                {/* Content */}
                 <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
                   <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
                     <div className="flex items-center gap-2 text-primary mb-2">
-                      <Briefcase size={18} />
+                      <Briefcase size={18} aria-hidden="true" />
                       <span className="font-display font-semibold">{exp.title}</span>
                     </div>
                     <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                       {exp.company}
                     </h3>
                     <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
-                      <Calendar size={14} />
-                      <span>{exp.period}</span>
+                      <Calendar size={14} aria-hidden="true" />
+                      <time>{exp.period}</time>
                     </div>
                     <ul className="space-y-2">
                       {exp.highlights.map((highlight, i) => (
                         <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" aria-hidden="true" />
                           {highlight}
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>

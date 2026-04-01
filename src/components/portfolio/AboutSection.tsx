@@ -9,7 +9,7 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-20 md:py-32 relative">
+    <section id="about" className="py-20 md:py-32 relative" aria-label="About Premsagar">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
@@ -21,7 +21,7 @@ const AboutSection = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             About <span className="text-primary">Me</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full" aria-hidden="true" />
         </motion.div>
 
         <div className="flex flex-col items-center gap-12 max-w-4xl mx-auto">
@@ -36,8 +36,11 @@ const AboutSection = () => {
               <div className="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden border-2 border-primary/50">
                 <img 
                   src={aboutProfile} 
-                  alt="Singara Premsagar" 
+                  alt="Premsagar - Aspiring Data Analyst with expertise in SQL, Power BI, and Excel" 
                   className="w-full h-full object-cover object-top"
+                  width={384}
+                  height={384}
+                  loading="lazy"
                 />
               </div>
             </div>
