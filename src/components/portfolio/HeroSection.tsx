@@ -38,14 +38,15 @@ const HeroSection = () => {
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+      aria-label="Hero section introducing Premsagar, Data Analyst"
     >
       {/* Background Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse-slow delay-1000" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" aria-hidden="true" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse-slow delay-1000" aria-hidden="true" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:justify-between lg:gap-12">
-          {/* Profile Image - Mobile First */}
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -57,8 +58,11 @@ const HeroSection = () => {
                 <div className="w-full h-full rounded-full bg-card overflow-hidden">
                   <img 
                     src={heroProfile} 
-                    alt="Singara Premsagar" 
+                    alt="Premsagar - Data Analyst skilled in SQL, Power BI, Excel and Data Visualization" 
                     className="w-full h-full object-cover object-top"
+                    width={384}
+                    height={384}
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -87,7 +91,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-name"
             >
-              Singara Premsagar
+              Premsagar — Data Analyst
             </motion.h1>
 
             <motion.div
@@ -99,9 +103,9 @@ const HeroSection = () => {
               <span className="text-xl md:text-2xl text-foreground font-bold">
                 And I'm a
               </span>
-              <span className="text-xl md:text-2xl text-primary font-bold min-w-[200px] text-left">
+              <span className="text-xl md:text-2xl text-primary font-bold min-w-[200px] text-left" aria-live="polite">
                 {displayText}
-                <span className="animate-pulse">|</span>
+                <span className="animate-pulse" aria-hidden="true">|</span>
               </span>
             </motion.div>
 
@@ -152,7 +156,7 @@ const HeroSection = () => {
           transition={{ delay: 1.5, y: { repeat: Infinity, duration: 1.5 } }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
+          <a href="#about" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Scroll to About section">
             <ArrowDown size={24} />
           </a>
         </motion.div>

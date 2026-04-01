@@ -35,7 +35,7 @@ const ProjectsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-20 md:py-32 relative">
+    <section id="projects" className="py-20 md:py-32 relative" aria-label="Data Analysis Projects by Premsagar">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
@@ -47,14 +47,14 @@ const ProjectsSection = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full" aria-hidden="true" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
-              <motion.div
+              <motion.article
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -66,15 +66,17 @@ const ProjectsSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block h-full"
+                  aria-label={`View ${project.title} project on GitHub`}
                 >
                   <div className="h-full p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col cursor-pointer">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center" aria-hidden="true">
                         <Icon className="text-primary" size={24} />
                       </div>
                       <motion.div
                         whileHover={{ rotate: -45 }}
                         className="text-muted-foreground group-hover:text-primary transition-colors"
+                        aria-hidden="true"
                       >
                         <ExternalLink size={20} />
                       </motion.div>
@@ -100,12 +102,12 @@ const ProjectsSection = () => {
                     </div>
 
                     <div className="flex items-center gap-2 text-sm">
-                      <TrendingUp size={16} className="text-primary" />
+                      <TrendingUp size={16} className="text-primary" aria-hidden="true" />
                       <span className="text-primary font-medium">{project.achievement}</span>
                     </div>
                   </div>
                 </a>
-              </motion.div>
+              </motion.article>
             );
           })}
         </div>

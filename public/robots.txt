@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://premsagar-portfolio-builder.vercel.app/sitemap.xml

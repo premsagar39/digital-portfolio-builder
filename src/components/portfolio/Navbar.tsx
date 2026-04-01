@@ -15,7 +15,6 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -35,13 +34,15 @@ const Navbar = () => {
           ? "bg-background/90 backdrop-blur-lg border-b border-border"
           : "bg-transparent"
       }`}
+      role="banner"
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <nav className="container mx-auto px-4 md:px-6" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 md:h-20">
           <motion.a
             href="#home"
             className="font-display text-xl md:text-2xl font-bold text-gradient"
             whileHover={{ scale: 1.05 }}
+            aria-label="Premsagar - Home"
           >
             Premsagar
           </motion.a>
@@ -68,6 +69,7 @@ const Navbar = () => {
               className="text-foreground p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -95,10 +97,9 @@ const Navbar = () => {
             </div>
           </motion.div>
         )}
-      </div>
-    </motion.nav>
+      </nav>
+    </motion.header>
   );
 };
 
 export default Navbar;
-

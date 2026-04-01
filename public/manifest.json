@@ -1,7 +1,7 @@
 {
-  "name": "Prem Sagar Portfolio",
-  "short_name": "PremPortfolio",
-  "description": "Portfolio website of Prem Sagar - Business Analyst, Finance Analyst & MIS Executive. Explore projects, skills, experience and get in touch.",
+  "name": "Premsagar | Data Analyst Portfolio",
+  "short_name": "Premsagar",
+  "description": "Portfolio website of Premsagar - Data Analyst skilled in SQL, Power BI, Excel, and Data Visualization. Explore projects, dashboards, and get in touch.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -45,36 +45,36 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Prem Sagar Portfolio - Desktop View"
+      "label": "Premsagar Data Analyst Portfolio - Desktop View"
     },
     {
       "src": "/screenshots/mobile-screenshot.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Prem Sagar Portfolio - Mobile View"
+      "label": "Premsagar Data Analyst Portfolio - Mobile View"
     }
   ],
   "shortcuts": [
     {
-      "name": "About Prem Sagar",
+      "name": "About Premsagar",
       "short_name": "About",
       "url": "/#about",
-      "description": "Learn about Prem Sagar",
+      "description": "Learn about Premsagar's background and expertise",
       "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     },
     {
       "name": "Projects",
       "short_name": "Projects",
       "url": "/#projects",
-      "description": "View portfolio projects",
+      "description": "View data analysis portfolio projects",
       "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     },
     {
       "name": "Contact",
       "short_name": "Contact",
       "url": "/#contact",
-      "description": "Get in touch with Prem Sagar",
+      "description": "Get in touch with Premsagar",
       "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     }
   ],
