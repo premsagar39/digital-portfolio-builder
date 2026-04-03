@@ -25,14 +25,14 @@ const PwaInstallBanner = () => {
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
           className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-md"
         >
-          <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3 shadow-lg">
+          <div className="flex items-center gap-3 rounded-2xl border border-border bg-card/95 backdrop-blur-md p-3 shadow-xl">
             <img
               src="/icons/icon-192x192.png"
-              alt="Prem Sagar Portfolio"
-              className="h-11 w-11 shrink-0 rounded-xl"
+              alt="Premsagar Portfolio"
+              className="h-12 w-12 shrink-0 rounded-full ring-2 ring-primary/20"
             />
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-foreground">Prem Sagar Portfolio</p>
+              <p className="truncate text-sm font-semibold text-foreground">Premsagar Portfolio</p>
               <p className="text-xs text-muted-foreground">Install for quick access</p>
             </div>
             <Button size="sm" onClick={install} className="shrink-0 rounded-full px-4">
