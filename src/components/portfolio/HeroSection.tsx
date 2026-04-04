@@ -55,9 +55,9 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="flex justify-center order-1 lg:order-2 lg:flex-1"
           >
-            <div className="relative" style={{ perspective: "1000px" }}>
+            <div className="relative animate-float" style={{ perspective: "1000px" }}>
               <div
-                className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary via-secondary to-primary p-1 animate-float cursor-pointer"
+                className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary via-secondary to-primary p-1 cursor-pointer"
                 onClick={() => setIsFlipped(!isFlipped)}
                 role="button"
                 tabIndex={0}
