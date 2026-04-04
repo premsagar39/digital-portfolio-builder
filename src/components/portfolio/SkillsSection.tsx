@@ -33,7 +33,7 @@ const education = [
     degree: "B.Tech – Computer Science & Engineering (Data Science)",
     institution: "GATES Institute of Technology, Gooty",
     year: "2022 – 2026",
-    score: "CGPA: 75.83%",
+    score: "CGPA: 75.29%",
   },
   {
     degree: "Intermediate (MPC)",
