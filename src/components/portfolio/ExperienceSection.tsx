@@ -6,24 +6,24 @@ import { Briefcase, Calendar } from "lucide-react";
 const experiences = [
   {
     title: "Data Analyst Intern",
-    company: "SmartBridge (Tableau)",
-    period: "May 2025 – July 2025",
-    certificateUrl: "https://drive.google.com/file/d/1-smartbridge-certificate",
+    company: "SmartBridge Educational Services",
+    period: "Oct 2025 – Mar 2026",
+    badge: "APSCHE Certified",
     highlights: [
-      "Cleaned and analyzed 50,000+ records using SQL and Excel",
-      "Built KPI dashboards in Tableau and automated weekly reports",
-      "Supported business teams with data storytelling presentations",
+      "Partnered with HR and cross-functional teams to define business requirements and validated data quality across employee datasets",
+      "Built Tableau HR Analytics dashboards tracking attrition rates and workforce KPIs to drive strategic retention decisions",
+      "Diagnosed root causes of workforce attrition through structured EDA; automated Excel reporting — reducing manual effort by ~40%",
     ],
   },
   {
     title: "Data Analyst Intern",
     company: "GrowAI",
     period: "May 2025 – Oct 2025",
-    certificateUrl: "https://www.growaiedtech.com/verify/1938791418SP",
+    badge: "Master Data Analysis Program",
     highlights: [
-      "Performed SQL-based data extraction, transformation, and quality checks",
-      "Designed Excel dashboards to track performance metrics",
-      "Automated recurring tasks, reducing manual effort by 25%",
+      "Applied data governance principles to ETL workflows on 11,000+ records — enforcing data quality checks and validation rules",
+      "Delivered Power BI dashboards with DAX measures tracking sales performance and revenue trends",
+      "Translated ambiguous business problems into SQL-driven customer segmentation analysis informing quarterly ROI decisions",
     ],
   },
 ];
@@ -73,10 +73,15 @@ const ExperienceSection = () => {
                     <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                       {exp.company}
                     </h3>
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
+                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
                       <Calendar size={14} aria-hidden="true" />
                       <time>{exp.period}</time>
                     </div>
+                    {exp.badge && (
+                      <span className="inline-block px-2 py-0.5 text-xs rounded-md bg-primary/10 text-primary font-medium mb-4">
+                        {exp.badge}
+                      </span>
+                    )}
                     <ul className="space-y-2">
                       {exp.highlights.map((highlight, i) => (
                         <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">

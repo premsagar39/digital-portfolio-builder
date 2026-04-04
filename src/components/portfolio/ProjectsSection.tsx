@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, BarChart3, Database, TrendingUp, Users } from "lucide-react";
+import { ExternalLink, BarChart3, Database, TrendingUp, Users, Store } from "lucide-react";
 
 const projects = [
   {
+    title: "Business Sales Insights Dashboard",
+    description: "Identified leadership's lack of visibility into revenue drivers. Wrote 50+ optimized SQL queries on 1,800+ records and built a Power BI KPI dashboard, uncovering that 22% of revenue was concentrated in 2 product categories. Delivered self-serve interactive slicers and drill-through reports.",
+    tools: ["MySQL", "Power BI", "DAX"],
+    achievement: "Enabled targeted pricing & inventory strategy",
+    icon: Database,
+    githubUrl: "https://github.com/premsagar39",
+  },
+  {
     title: "Zomato Restaurant Performance Dashboard",
-    description: "Cleaned and transformed raw Excel data using Power Query. Developed interactive dashboards using DAX for KPIs such as revenue, order count, and customer trends. Implemented geospatial analysis to identify top-performing locations.",
+    description: "Built an end-to-end Power BI dashboard analyzing 9,551 restaurants across 15 countries and 4M+ user votes. Identified high-growth cuisine segments — North Indian (3,960 units) and Chinese (2,735 units). Performed time-series and correlation analysis revealing 63.88% of non-delivery restaurants had lower popularity.",
     tools: ["Power BI", "DAX", "Power Query"],
-    achievement: "Increased insight accuracy by 30%",
-    icon: BarChart3,
+    achievement: "Data-driven market expansion insights",
+    icon: Store,
     githubUrl: "https://github.com/premsagar39/zomato-restaurant-analysis-powerbi",
   },
   {
-    title: "E-commerce Sales Analysis using MySQL",
-    description: "Performed end-to-end SQL analysis on E-commerce sales data to evaluate sales performance, profitability, customer behavior, and regional trends. Wrote complex SQL queries using aggregation functions, CTEs, and window functions.",
-    tools: ["MySQL", "Excel", "SQL"],
-    achievement: "Analyzed SuperStoreUS-2015 dataset",
-    icon: Database,
-    githubUrl: "https://github.com/premsagar39/mysql-superstore-sales-analysis",
-  },
-  {
     title: "Customer Churn Analysis",
-    description: "Analyzed 7,043 telecom customer records to identify churn drivers using Python. Measured an overall churn rate of ~26%, identifying month-to-month contracts as highest churn segment. Built business-ready visualizations.",
-    tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-    achievement: "Insights to reduce churn by 10-15%",
+    description: "Decomposed the telecom churn problem into testable hypotheses across contract type, tenure, and charges. Analyzed 7,000+ records using Pandas and NumPy — identifying a 27% churn rate among month-to-month customers and translating findings into actionable retention strategies.",
+    tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"],
+    achievement: "Identified 27% churn rate & retention strategies",
     icon: Users,
     githubUrl: "https://github.com/premsagar39/telecom-Customer-Churn-Analysis",
   },
