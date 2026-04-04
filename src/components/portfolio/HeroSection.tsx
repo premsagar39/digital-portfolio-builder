@@ -128,7 +128,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-name"
             >
-              Premsagar — Data Analyst
+              Premsagar
             </motion.h1>
 
             <motion.div
