@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { usePwaInstall } from "@/hooks/use-pwa-install";
 import { Button } from "@/components/ui/button";
+import pwaIcon from "@/assets/pwa-icon.png";
 
 const PwaInstallBanner = () => {
   const { canInstall, install } = usePwaInstall();
