@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { usePwaInstall } from "@/hooks/use-pwa-install";
 import { Button } from "@/components/ui/button";
+import pwaIcon from "@/assets/pwa-icon.png";
 
 const PwaInstallBanner = () => {
   const { canInstall, install } = usePwaInstall();
@@ -27,9 +28,9 @@ const PwaInstallBanner = () => {
         >
           <div className="flex items-center gap-3 rounded-2xl border border-border bg-card/95 backdrop-blur-md p-3 shadow-xl">
             <img
-              src="/icons/icon-192x192.png"
+              src={pwaIcon}
               alt="Premsagar Portfolio"
-              className="h-12 w-12 shrink-0 rounded-full ring-2 ring-primary/20"
+              className="h-12 w-12 shrink-0 rounded-full ring-2 ring-primary/20 object-cover"
             />
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-foreground">Premsagar Portfolio</p>

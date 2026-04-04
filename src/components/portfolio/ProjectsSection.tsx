@@ -10,7 +10,7 @@ const projects = [
     tools: ["MySQL", "Power BI", "DAX"],
     achievement: "Enabled targeted pricing & inventory strategy",
     icon: Database,
-    githubUrl: "https://github.com/premsagar39",
+    githubUrl: "https://github.com/premsagar39/superstore-sales-analysis",
   },
   {
     title: "Zomato Restaurant Performance Dashboard",
