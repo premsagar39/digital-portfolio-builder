@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroProfile from "@/assets/hero-profile.png";
+import heroProfileBack from "@/assets/hero-profile-back.png";
 import { useState, useEffect } from "react";
 
 const words = ["Power BI Developer", "Data Analyst", "Business Analyst", "Finance Analyst", "MIS Executive"];
@@ -10,6 +11,7 @@ const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   useEffect(() => {
     const currentWord = words[wordIndex];
@@ -46,16 +48,32 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:justify-between lg:gap-12">
-          {/* Profile Image */}
+          {/* Profile Image with 3D Flip */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="flex justify-center order-1 lg:order-2 lg:flex-1"
           >
-            <div className="relative">
-              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary via-secondary to-primary p-1 animate-float">
-                <div className="w-full h-full rounded-full bg-card overflow-hidden">
+            <div className="relative" style={{ perspective: "1000px" }}>
+              <div
+                className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary via-secondary to-primary p-1 animate-float cursor-pointer"
+                onClick={() => setIsFlipped(!isFlipped)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setIsFlipped(!isFlipped)}
+                aria-label="Click to flip profile image"
+                style={{
+                  transformStyle: "preserve-3d",
+                  transition: "transform 0.7s ease-in-out",
+                  transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                }}
+              >
+                {/* Front Side */}
+                <div
+                  className="absolute inset-[4px] rounded-full bg-card overflow-hidden"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
                   <img 
                     src={heroProfile} 
                     alt="Premsagar - Data Analyst skilled in SQL, Power BI, Excel and Data Visualization" 
@@ -65,7 +83,26 @@ const HeroSection = () => {
                     loading="eager"
                   />
                 </div>
+                {/* Back Side */}
+                <div
+                  className="absolute inset-[4px] rounded-full bg-card overflow-hidden"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  <img 
+                    src={heroProfileBack} 
+                    alt="Premsagar - Professional portrait" 
+                    className="w-full h-full object-cover object-top"
+                    width={384}
+                    height={384}
+                    loading="eager"
+                  />
+                </div>
               </div>
+              {/* Shadow */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-primary/20 rounded-full blur-xl" aria-hidden="true" />
             </div>
           </motion.div>
 
