@@ -140,7 +140,7 @@ const HeroSection = () => {
                 variant="outline"
                 className="font-semibold px-8 rounded-full transition-all duration-300"
               >
-                <a href="/resume/Premsagar_Resume_2026_3.docx" download>
+                <a href="/resume/Premsagar_Resume_2026.pdf" download>
                   <Download />
                   Download CV
                 </a>
