@@ -3,12 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import heroProfile from "@/assets/hero-profile.png";
 
 const SplashScreen = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => {
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (navigator as any).standalone === true;
+    return !isStandalone;
+  });
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 2500);
+    if (!visible) return;
+    const timer = setTimeout(() => setVisible(false), 3000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [visible]);
 
   return (
     <AnimatePresence>
