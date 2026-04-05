@@ -6,7 +6,7 @@ import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
-import PwaInstallBanner from "@/components/portfolio/PwaInstallBanner";
+
 import SplashScreen from "@/components/portfolio/SplashScreen";
 
 const Index = () => {
@@ -14,7 +14,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SplashScreen />
       <Navbar />
-      <PwaInstallBanner />
+      
       <HeroSection />
       <AboutSection />
       <SkillsSection />
