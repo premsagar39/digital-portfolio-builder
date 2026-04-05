@@ -14,7 +14,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SplashScreen />
       <Navbar />
-      <PwaInstallBanner />
+      
       <HeroSection />
       <AboutSection />
       <SkillsSection />
