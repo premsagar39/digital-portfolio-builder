@@ -65,7 +65,7 @@ const SplashScreen = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.3 }}
             className="flex gap-1.5 mt-10"
           >
             {[0, 1, 2].map((i) => (
