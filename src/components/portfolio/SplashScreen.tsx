@@ -7,7 +7,7 @@ const SplashScreen = () => {
 
   useEffect(() => {
     if (!visible) return;
-    const timer = setTimeout(() => setVisible(false), 3000);
+    const timer = setTimeout(() => setVisible(false), 800);
     return () => clearTimeout(timer);
   }, [visible]);
 
@@ -17,7 +17,7 @@ const SplashScreen = () => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
           style={{
             background: "linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%)",
@@ -34,7 +34,7 @@ const SplashScreen = () => {
           <motion.div
             initial={{ scale: 0.7, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="relative mb-8"
           >
             <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-white/20 overflow-hidden shadow-2xl">
@@ -50,7 +50,7 @@ const SplashScreen = () => {
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="text-center px-4"
           >
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-wide">
@@ -65,7 +65,7 @@ const SplashScreen = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.3 }}
             className="flex gap-1.5 mt-10"
           >
             {[0, 1, 2].map((i) => (
