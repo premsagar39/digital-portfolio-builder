@@ -17,7 +17,7 @@ const SplashScreen = () => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
           style={{
             background: "linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%)",
