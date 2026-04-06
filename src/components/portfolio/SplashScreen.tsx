@@ -34,7 +34,7 @@ const SplashScreen = () => {
           <motion.div
             initial={{ scale: 0.7, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="relative mb-8"
           >
             <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-white/20 overflow-hidden shadow-2xl">
