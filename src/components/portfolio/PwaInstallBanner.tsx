@@ -34,7 +34,6 @@ const PwaInstallBanner = () => {
             />
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-foreground">Premsagar Portfolio</p>
-              <p className="text-xs text-muted-foreground">Install for quick access</p>
             </div>
             <Button size="sm" onClick={install} className="shrink-0 rounded-full px-4">
               Install
