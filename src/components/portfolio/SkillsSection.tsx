@@ -1,31 +1,27 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { 
-  Code, Database, Table, Calculator, BarChart3, PieChart, 
-  LineChart, FileSpreadsheet, Search, TrendingUp, Sparkles, 
-  Settings, Filter, Gauge, Brain, FileCode
-} from "lucide-react";
+import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const skills = [
-  { name: "Python", icon: Code },
-  { name: "SQL (MySQL)", icon: Database },
-  { name: "Pandas", icon: Table },
-  { name: "NumPy", icon: Calculator },
-  { name: "Matplotlib", icon: BarChart3 },
-  { name: "Power BI", icon: PieChart },
-  { name: "Plotly", icon: LineChart },
-  { name: "Tableau", icon: LineChart },
-  { name: "Excel", icon: FileSpreadsheet },
-  { name: "EDA", icon: Search },
-  { name: "Statistical Analysis", icon: TrendingUp },
-  { name: "Data Cleaning", icon: Sparkles },
-  { name: "ETL Processes", icon: Settings },
-  { name: "KPI Reporting", icon: Gauge },
-  { name: "Dashboard Development", icon: Gauge },
-  { name: "Business Intelligence", icon: Brain },
-  { name: "DAX", icon: FileCode },
-  { name: "Power Query", icon: Filter },
+  "Python",
+  "SQL (MySQL)",
+  "Pandas",
+  "NumPy",
+  "Matplotlib",
+  "Power BI",
+  "Plotly",
+  "Tableau",
+  "Excel",
+  "EDA",
+  "Statistical Analysis",
+  "Data Cleaning",
+  "ETL Processes",
+  "KPI Reporting",
+  "Dashboard Development",
+  "Business Intelligence",
+  "DAX",
+  "Power Query",
 ];
 
 const education = [
@@ -67,136 +63,123 @@ const certifications = [
   },
 ];
 
-type TabType = "skills" | "education" | "certifications";
+const SectionHeading = ({ children }: { children: string }) => (
+  <motion.h2
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6 }}
+    className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-10 md:mb-14"
+  >
+    {children}
+  </motion.h2>
+);
+
+const cardClass =
+  "rounded-[2rem] bg-card border border-border p-8 md:p-12 shadow-sm";
 
 const SkillsSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeTab, setActiveTab] = useState<TabType>("skills");
-
-  const tabs: { id: TabType; label: string }[] = [
-    { id: "skills", label: "Skills" },
-    { id: "education", label: "Education" },
-    { id: "certifications", label: "Certifications" },
-  ];
-
   return (
-    <section id="skills" className="py-20 md:py-32 bg-card/50 relative">
+    <section id="skills" className="py-12 md:py-16" aria-label="Skills, education and certifications">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            My <span className="text-primary">Expertise</span>
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+        <SectionHeading>Skills</SectionHeading>
 
-        {/* Tab Navigation */}
-        <div className="flex justify-center gap-4 md:gap-8 mb-12 flex-wrap">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`relative text-lg font-semibold transition-colors pb-2 ${
-                activeTab === tab.id 
-                  ? "text-primary" 
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {tab.label}
-              {activeTab === tab.id && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                />
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* Skills Tab */}
-        {activeTab === "skills" && (
+        <div className="grid gap-6">
+          {/* Toolkit */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className={cardClass}
           >
-            {skills.map((skill, index) => {
-              const IconComponent = skill.icon;
-              return (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  whileHover={{ y: -5, backgroundColor: "hsl(var(--primary) / 0.1)" }}
-                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-primary/50 bg-background/50 backdrop-blur-sm cursor-default transition-all"
+            <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-6">
+              Toolkit
+            </p>
+            <div className="flex flex-wrap gap-2.5">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-4 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground"
                 >
-                  <IconComponent size={18} className="text-primary" />
-                  <span className="text-foreground font-medium">{skill.name}</span>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        )}
-
-        {/* Education Tab */}
-        {activeTab === "education" && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="grid gap-6 max-w-2xl mx-auto"
-          >
-            {education.map((edu, index) => (
-              <motion.div
-                key={edu.degree}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5, borderColor: "hsl(var(--primary))" }}
-                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all"
-              >
-                <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-                  {edu.year}
+                  {skill}
                 </span>
-                <h4 className="font-display text-xl font-semibold text-primary mb-2">{edu.degree}</h4>
-                <p className="text-muted-foreground mb-2">{edu.institution}</p>
-                <p className="text-foreground font-medium">{edu.score}</p>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </motion.div>
-        )}
 
-        {/* Certifications Tab */}
-        {activeTab === "certifications" && (
+          {/* Education */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="grid gap-6 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className={cardClass}
           >
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5, borderColor: "hsl(var(--primary))" }}
-                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border text-center transition-all"
-              >
-                <h4 className="font-display text-lg font-semibold text-primary mb-2">{cert.title}</h4>
-                <p className="text-muted-foreground">{cert.description}</p>
-              </motion.div>
-            ))}
+            <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-6">
+              Education
+            </p>
+            <div className="grid gap-6">
+              {education.map((edu) => (
+                <div
+                  key={edu.degree}
+                  className="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-6 border-b border-border last:pb-0 last:border-b-0"
+                >
+                  <div>
+                    <h3 className="font-display text-lg md:text-xl font-semibold">
+                      {edu.degree}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">{edu.institution}</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-full border border-border bg-background text-sm text-muted-foreground">
+                      {edu.year}
+                    </span>
+                    <span className="text-sm font-semibold">{edu.score}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
-        )}
+
+          {/* Certifications */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className={cardClass}
+          >
+            <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-6">
+              Certifications
+            </p>
+            <div className="grid gap-6">
+              {certifications.map((cert) => (
+                <div
+                  key={cert.title}
+                  className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-6 border-b border-border last:pb-0 last:border-b-0"
+                >
+                  <div>
+                    <h3 className="font-display text-lg md:text-xl font-semibold mb-1">
+                      {cert.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">{cert.description}</p>
+                  </div>
+                  <a
+                    href={cert.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 self-start md:self-auto px-4 py-2 rounded-full border border-border bg-background text-sm font-medium hover:bg-secondary transition-colors"
+                    aria-label={`View ${cert.title} certificate`}
+                  >
+                    Certificate
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
