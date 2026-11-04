@@ -8,13 +8,19 @@ const Footer = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="py-8 border-t border-border"
+      className="py-10"
       role="contentinfo"
     >
-      <div className="container mx-auto px-4 md:px-6 text-center">
-        <p className="text-muted-foreground text-sm">
-          © {currentYear} <span className="text-primary">Premsagar</span>. All rights reserved.
+      <div className="container mx-auto px-4 md:px-6 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+        <p className="text-sm text-muted-foreground">
+          © {currentYear} <span className="text-foreground font-medium">Premsagar</span>. All rights reserved.
         </p>
+        <a
+          href="#home"
+          className="text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
+        >
+          Back to top ↑
+        </a>
       </div>
     </motion.footer>
   );

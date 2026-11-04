@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
@@ -29,72 +26,55 @@ const experiences = [
 ];
 
 const ExperienceSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="experience" className="py-20 md:py-32 bg-card/50 relative" aria-label="Internship Experience">
+    <section id="experience" className="py-12 md:py-16" aria-label="Internship Experience">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-10 md:mb-14"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-gradient">Internships</span>
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" aria-hidden="true" />
-        </motion.div>
+          Internships
+        </motion.h2>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="relative">
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" aria-hidden="true" />
-
-            {experiences.map((exp, index) => (
-              <motion.article
-                key={exp.company}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative flex items-start mb-12 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10" aria-hidden="true" />
-
-                <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                  <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors">
-                    <div className="flex items-center gap-2 text-primary mb-2">
-                      <Briefcase size={18} aria-hidden="true" />
-                      <span className="font-display font-semibold">{exp.title}</span>
-                    </div>
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                      {exp.company}
-                    </h3>
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
-                      <Calendar size={14} aria-hidden="true" />
-                      <time>{exp.period}</time>
-                    </div>
-                    {exp.badge && (
-                      <span className="inline-block px-2 py-0.5 text-xs rounded-md bg-primary/10 text-primary font-medium mb-4">
-                        {exp.badge}
-                      </span>
-                    )}
-                    <ul className="space-y-2">
-                      {exp.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" aria-hidden="true" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+        <div className="grid gap-6">
+          {experiences.map((exp, index) => (
+            <motion.article
+              key={exp.company}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="rounded-[2rem] bg-card border border-border p-8 md:p-12 shadow-sm"
+            >
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+                <div>
+                  <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                    Internship · {exp.period}
+                  </p>
+                  <h3 className="font-display text-2xl md:text-4xl font-bold tracking-tight">
+                    {exp.company}
+                  </h3>
                 </div>
-              </motion.article>
-            ))}
-          </div>
+                <span className="self-start px-4 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground">
+                  {exp.badge}
+                </span>
+              </div>
+
+              <p className="text-muted-foreground font-medium mb-5">{exp.title}</p>
+
+              <ul className="space-y-3">
+                {exp.highlights.map((highlight, i) => (
+                  <li key={i} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" aria-hidden="true" />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
