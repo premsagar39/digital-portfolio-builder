@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, BarChart3, Database, TrendingUp, Users, Store } from "lucide-react";
+import { ArrowUpRight, BarChart3, Store, Users } from "lucide-react";
 
 const projects = [
   {
     title: "Business Sales Insights Dashboard",
-    description: "Identified leadership's lack of visibility into revenue drivers. Wrote 50+ optimized SQL queries on 1,800+ records and built a Power BI KPI dashboard, uncovering that 22% of revenue was concentrated in 2 product categories. Delivered self-serve interactive slicers and drill-through reports.",
+    subtitle: "Sales analytics · MySQL + Power BI",
+    description:
+      "Identified leadership's lack of visibility into revenue drivers. Wrote 50+ optimized SQL queries on 1,800+ records and built a Power BI KPI dashboard, uncovering that 22% of revenue was concentrated in 2 product categories. Delivered self-serve interactive slicers and drill-through reports.",
     tools: ["MySQL", "Power BI", "DAX"],
     achievement: "Enabled targeted pricing & inventory strategy",
-    icon: Database,
+    icon: BarChart3,
     githubUrl: "https://github.com/premsagar39/superstore-sales-analysis",
   },
   {
     title: "Zomato Restaurant Performance Dashboard",
-    description: "Built an end-to-end Power BI dashboard analyzing 9,551 restaurants across 15 countries and 4M+ user votes. Identified high-growth cuisine segments — North Indian (3,960 units) and Chinese (2,735 units). Performed time-series and correlation analysis revealing 63.88% of non-delivery restaurants had lower popularity.",
+    subtitle: "Market analysis · Power BI",
+    description:
+      "Built an end-to-end Power BI dashboard analyzing 9,551 restaurants across 15 countries and 4M+ user votes. Identified high-growth cuisine segments — North Indian (3,960 units) and Chinese (2,735 units). Performed time-series and correlation analysis revealing 63.88% of non-delivery restaurants had lower popularity.",
     tools: ["Power BI", "DAX", "Power Query"],
     achievement: "Data-driven market expansion insights",
     icon: Store,
@@ -22,7 +24,9 @@ const projects = [
   },
   {
     title: "Customer Churn Analysis",
-    description: "Decomposed the telecom churn problem into testable hypotheses across contract type, tenure, and charges. Analyzed 7,000+ records using Pandas and NumPy — identifying a 27% churn rate among month-to-month customers and translating findings into actionable retention strategies.",
+    subtitle: "Telecom analytics · Python",
+    description:
+      "Decomposed the telecom churn problem into testable hypotheses across contract type, tenure, and charges. Analyzed 7,000+ records using Pandas and NumPy — identifying a 27% churn rate among month-to-month customers and translating findings into actionable retention strategies.",
     tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"],
     achievement: "Identified 27% churn rate & retention strategies",
     icon: Users,
@@ -31,82 +35,79 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="projects" className="py-20 md:py-32 relative" aria-label="Data Analysis Projects by Premsagar">
+    <section id="projects" className="py-12 md:py-16" aria-label="Data Analysis Projects by Premsagar">
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-10 md:mb-14"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-gradient">Projects</span>
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" aria-hidden="true" />
-        </motion.div>
+          Projects
+        </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p className="text-muted-foreground max-w-xl mb-10 md:mb-14 -mt-6 md:-mt-10">
+          Dashboards and analyses researched, built and documented — each links to
+          the full project on GitHub.
+        </p>
+
+        <div className="grid gap-6">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
               <motion.article
                 key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="group"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="rounded-[2rem] bg-card border border-border p-8 md:p-12 shadow-sm grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-14 items-center"
               >
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full"
-                  aria-label={`View ${project.title} project on GitHub`}
-                >
-                  <div className="h-full p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col cursor-pointer">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center" aria-hidden="true">
-                        <Icon className="text-primary" size={24} />
-                      </div>
-                      <motion.div
-                        whileHover={{ rotate: -45 }}
-                        className="text-muted-foreground group-hover:text-primary transition-colors"
-                        aria-hidden="true"
+                <div>
+                  <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-4">
+                    Data Analysis
+                  </p>
+                  <h3 className="font-display text-2xl md:text-4xl font-bold tracking-tight mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-5">{project.subtitle}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2.5 mb-6">
+                    {project.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="px-4 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground"
                       >
-                        <ExternalLink size={20} />
-                      </motion.div>
-                    </div>
-
-                    <h3 className="font-display text-lg font-semibold text-primary mb-3">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tools.map((tool) => (
-                        <span
-                          key={tool}
-                          className="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground"
-                        >
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-2 text-sm">
-                      <TrendingUp size={16} className="text-primary" aria-hidden="true" />
-                      <span className="text-primary font-medium">{project.achievement}</span>
-                    </div>
+                        {tool}
+                      </span>
+                    ))}
                   </div>
-                </a>
+
+                  <p className="flex items-start gap-2 text-sm text-muted-foreground mb-7">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" aria-hidden="true" />
+                    {project.achievement}
+                  </p>
+
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background text-sm font-medium hover:bg-secondary transition-colors"
+                    aria-label={`View ${project.title} on GitHub`}
+                  >
+                    View on GitHub
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
+
+                <div className="hidden lg:flex w-56 h-56 rounded-3xl bg-secondary items-center justify-center" aria-hidden="true">
+                  <Icon size={64} strokeWidth={1.5} className="text-foreground/60" />
+                </div>
               </motion.article>
             );
           })}
