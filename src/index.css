@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 42 33% 96%;
-    --foreground: 220 30% 14%;
+    --background: 40 24% 95%;
+    --foreground: 240 10% 10%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 30% 14%;
@@ -15,24 +15,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 30% 14%;
 
-    --primary: 197 100% 42%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 240 8% 12%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 32 88% 92%;
-    --secondary-foreground: 220 30% 18%;
+    --secondary: 40 22% 89%;
+    --secondary-foreground: 240 10% 14%;
 
-    --muted: 35 30% 90%;
-    --muted-foreground: 220 16% 40%;
+    --muted: 40 18% 88%;
+    --muted-foreground: 240 6% 42%;
 
-    --accent: 16 88% 56%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 240 8% 12%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 84%;
-    --input: 220 20% 84%;
-    --ring: 197 100% 42%;
+    --border: 240 8% 86%;
+    --input: 240 8% 86%;
+    --ring: 240 8% 12%;
 
     --radius: 0.75rem;
 
@@ -46,10 +46,10 @@
     --sidebar-ring: 197 100% 42%;
 
     /* Custom portfolio tokens */
-    --name-color: 16 88% 46%;
-    --gradient-primary: linear-gradient(45deg, hsl(197 100% 42%), hsl(16 88% 56%));
-    --gradient-glow: 0 0 40px hsl(197 100% 42% / 0.18);
-    --text-gradient: linear-gradient(90deg, hsl(197 100% 42%), hsl(16 88% 56%));
+    --name-color: 240 10% 10%;
+    --gradient-primary: linear-gradient(45deg, hsl(240 8% 12%), hsl(240 6% 30%));
+    --gradient-glow: 0 0 40px hsl(240 8% 12% / 0.15);
+    --text-gradient: linear-gradient(90deg, hsl(240 10% 10%), hsl(240 6% 35%));
   }
 
   .dark {
@@ -120,7 +120,6 @@
 
   .text-name {
     color: hsl(var(--name-color));
-    text-shadow: 0 0 20px hsl(var(--name-color) / 0.4);
   }
 
   .glow-effect {
