@@ -34,6 +34,8 @@ const projects = [
   },
 ];
 
+const doorEase = [0.65, 0, 0.35, 1] as const;
+
 const ProjectsSection = () => {
   return (
     <section id="projects" className="py-12 md:py-16" aria-label="Data Analysis Projects by Premsagar">
@@ -63,7 +65,7 @@ const ProjectsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="rounded-[2rem] bg-card border border-border p-8 md:p-12 shadow-sm grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-14 items-center"
+                className="group relative rounded-[2rem] bg-card border border-border p-8 md:p-12 shadow-sm grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-14 items-center overflow-hidden"
               >
                 <div>
                   <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-4">
@@ -97,7 +99,7 @@ const ProjectsSection = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background text-sm font-medium hover:bg-secondary transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background text-sm font-medium hover:bg-secondary hover:scale-[1.03] transition-all duration-300"
                     aria-label={`View ${project.title} on GitHub`}
                   >
                     View on GitHub
@@ -106,7 +108,36 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="hidden lg:flex w-56 h-56 rounded-3xl bg-secondary items-center justify-center" aria-hidden="true">
-                  <Icon size={64} strokeWidth={1.5} className="text-foreground/60" />
+                  <Icon size={64} strokeWidth={1.5} className="text-foreground/60 group-hover:scale-110 transition-transform duration-500" />
+                </div>
+
+                {/* Magic doors cover — two halves slide apart on hover (desktop) */}
+                <div aria-hidden="true" className="hidden lg:block absolute inset-0 pointer-events-none">
+                  <div
+                    className="absolute inset-y-0 left-0 w-1/2 bg-secondary transition-transform duration-700 group-hover:-translate-x-full group-focus-within:-translate-x-full border-r border-border/60"
+                    style={{ transitionTimingFunction: `cubic-bezier(${doorEase.join(",")})` }}
+                  >
+                    <div className="h-full flex items-center justify-center gap-4">
+                      <span className="font-display text-7xl font-bold text-foreground/25 tabular-nums">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <Icon size={44} strokeWidth={1.2} className="text-foreground/25" />
+                    </div>
+                  </div>
+                  <div
+                    className="absolute inset-y-0 right-0 w-1/2 bg-secondary transition-transform duration-700 group-hover:translate-x-full group-focus-within:translate-x-full border-l border-border/60"
+                    style={{ transitionTimingFunction: `cubic-bezier(${doorEase.join(",")})` }}
+                  >
+                    <div className="h-full flex flex-col items-center justify-center gap-2">
+                      <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                        Hover to open
+                      </span>
+                      <span className="w-px h-10 bg-border" />
+                      <span className="font-display text-xl font-bold text-foreground/70">
+                        {project.title.split(" ")[0]}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </motion.article>
             );

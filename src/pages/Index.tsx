@@ -8,12 +8,14 @@ import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
 
 import SplashScreen from "@/components/portfolio/SplashScreen";
+import DoorsLanding from "@/components/portfolio/DoorsLanding";
 import PwaInstallBanner from "@/components/portfolio/PwaInstallBanner";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SplashScreen />
+      <DoorsLanding />
       <PwaInstallBanner />
       <Navbar />
       

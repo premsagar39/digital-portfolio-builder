@@ -61,11 +61,11 @@ const AboutSection = () => {
 
           {/* Image */}
           <div className="flex justify-center lg:justify-end">
-            <div className="w-full max-w-sm md:max-w-md rounded-3xl overflow-hidden border border-border">
+            <div className="w-full max-w-xs md:max-w-sm rounded-full overflow-hidden ring-1 ring-border glow-effect">
               <img
                 src={aboutProfile}
                 alt="Premsagar - Aspiring Data Analyst with expertise in SQL, Power BI, and Excel"
-                className="w-full aspect-square object-cover object-top"
+                className="w-full aspect-square object-cover"
                 width={448}
                 height={448}
                 loading="lazy"
