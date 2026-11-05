@@ -17,9 +17,10 @@ const Footer = () => {
         </p>
         <a
           href="#home"
+          onClick={() => window.dispatchEvent(new Event("premsagar:open-doors"))}
           className="text-sm font-medium text-foreground hover:text-muted-foreground transition-colors"
         >
-          Back to top ↑
+          Back to the doors ↺
         </a>
       </div>
     </motion.footer>
