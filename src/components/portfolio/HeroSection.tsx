@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import heroProfile from "@/assets/hero-profile.png";
 
 const words = ["Power BI Developer", "Data Analyst", "Business Analyst", "Finance Analyst", "MIS Executive"];
 
@@ -40,65 +41,91 @@ const HeroSection = () => {
       aria-label="Introduction to Premsagar, Data Analyst"
     >
       <div className="container mx-auto px-4 md:px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="font-display font-bold tracking-tight leading-[0.95] text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] mb-6 md:mb-8"
-        >
-          Premsagar
-        </motion.h1>
+        <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
+          <div>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="font-display font-bold tracking-tight leading-[0.95] text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] mb-6 md:mb-8"
+            >
+              Premsagar
+            </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-lg md:text-2xl text-foreground font-medium mb-4 max-w-2xl"
-          aria-live="polite"
-        >
-          And I'm a{" "}
-          <span className="text-muted-foreground">
-            {displayText}
-            <span className="animate-pulse" aria-hidden="true">|</span>
-          </span>
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-lg md:text-2xl text-foreground font-medium mb-4 max-w-2xl"
+              aria-live="polite"
+            >
+              And I'm a{" "}
+              <span className="text-muted-foreground">
+                {displayText}
+                <span className="animate-pulse" aria-hidden="true">|</span>
+              </span>
+            </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.35, duration: 0.6 }}
-          className="text-muted-foreground max-w-xl mb-8 md:mb-10 leading-relaxed text-base md:text-lg"
-        >
-          Data analysis portfolio: projects, internships and dashboards built with
-          SQL, Python, Power BI and Excel — from raw data to decisions.
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+              className="text-muted-foreground max-w-xl mb-8 md:mb-10 leading-relaxed text-base md:text-lg"
+            >
+              Data analysis portfolio: projects, internships and dashboards built with
+              SQL, Python, Power BI and Excel — from raw data to decisions.
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full px-8 font-medium bg-primary text-primary-foreground hover:bg-primary/85 transition-all duration-300"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full px-8 font-medium bg-primary text-primary-foreground hover:bg-primary/85 hover:scale-[1.03] transition-all duration-300"
+              >
+                <a href="#contact">Let's Connect</a>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full px-8 font-medium hover:scale-[1.03] transition-all duration-300"
+              >
+                <a href="/resume/Premsagar_Resume_2026.pdf" download>
+                  <Download />
+                  Download CV
+                </a>
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Circular portrait with glow */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="flex justify-center lg:justify-end order-first lg:order-none"
           >
-            <a href="#contact">Let's Connect</a>
-          </Button>
-
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="rounded-full px-8 font-medium transition-all duration-300"
-          >
-            <a href="/resume/Premsagar_Resume_2026.pdf" download>
-              <Download />
-              Download CV
-            </a>
-          </Button>
-        </motion.div>
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <img
+                src={heroProfile}
+                alt="Premsagar, aspiring Data Analyst skilled in SQL, Power BI and Excel"
+                width={320}
+                height={320}
+                className="w-32 h-32 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full object-cover ring-1 ring-border glow-effect"
+                loading="eager"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       <motion.div

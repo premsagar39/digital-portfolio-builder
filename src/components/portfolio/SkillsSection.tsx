@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  Braces,
+  Database,
+  LayoutDashboard,
+  LineChart,
+  Presentation,
+  Search,
+} from "lucide-react";
 
 const skills = [
   "Python",
@@ -22,6 +30,39 @@ const skills = [
   "Business Intelligence",
   "DAX",
   "Power Query",
+];
+
+const abilities = [
+  {
+    title: "Data Cleaning & Preparation",
+    description: "Turning messy raw records into analysis-ready datasets with validation rules and quality checks.",
+    icon: Database,
+  },
+  {
+    title: "Exploratory Data Analysis",
+    description: "EDA with Python to surface trends, outliers and testable business hypotheses.",
+    icon: Search,
+  },
+  {
+    title: "Dashboard Development",
+    description: "Interactive Power BI & Tableau dashboards with slicers and drill-through reports.",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "KPI Reporting",
+    description: "Automated KPI and executive reporting with DAX measures and clean visuals.",
+    icon: LineChart,
+  },
+  {
+    title: "SQL & Data Modeling",
+    description: "Optimized MySQL queries, joins and data models that scale past thousands of records.",
+    icon: Braces,
+  },
+  {
+    title: "Insight Storytelling",
+    description: "Translating analysis into recommendations stakeholders can act on.",
+    icon: Presentation,
+  },
 ];
 
 const education = [
@@ -84,6 +125,29 @@ const SkillsSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <SectionHeading>Skills</SectionHeading>
 
+        {/* Ability cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-6">
+          {abilities.map((ability, i) => {
+            const Icon = ability.icon;
+            return (
+              <motion.div
+                key={ability.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className="rounded-2xl bg-card border border-border p-6 shadow-sm hover:-translate-y-1 hover:shadow-md hover:border-foreground/30 transition-all duration-300"
+              >
+                <div className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center mb-4" aria-hidden="true">
+                  <Icon size={20} strokeWidth={1.8} className="text-primary" />
+                </div>
+                <h3 className="font-display text-lg font-semibold mb-1.5">{ability.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{ability.description}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+
         <div className="grid gap-6">
           {/* Toolkit */}
           <motion.div
@@ -100,7 +164,7 @@ const SkillsSection = () => {
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground"
+                  className="px-4 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground hover:-translate-y-0.5 hover:border-foreground/40 transition-all duration-200"
                 >
                   {skill}
                 </span>
