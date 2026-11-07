@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import aboutProfile from "@/assets/about-profile.jpg";
+import aboutProfile from "@/assets/hero-profile.png";
 
 const aboutTags = ["SQL", "Power BI", "Excel", "Python", "Tableau", "EDA", "ETL", "KPI Reporting"];
 
