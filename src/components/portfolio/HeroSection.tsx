@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import heroProfile from "@/assets/hero-profile.png";
@@ -37,26 +37,29 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="pt-32 md:pt-40 pb-10 md:pb-16"
+      className="pt-28 md:pt-36 pb-8 md:pb-12"
       aria-label="Introduction to Premsagar, Data Analyst"
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
-          <div>
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_auto] gap-8 lg:gap-16 items-center">
+          <div className="order-2 lg:order-1">
+            <p className="text-xs md:text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground mb-5">
+              Data &amp; business analytics · Portfolio
+            </p>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-display font-bold tracking-tight leading-[0.95] text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] mb-6 md:mb-8"
+              className="font-display font-bold leading-[0.95] text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] mb-5 md:mb-7"
             >
-              Premsagar
+              <span className="text-name">Premsagar</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-lg md:text-2xl text-foreground font-medium mb-4 max-w-2xl"
+              className="text-lg md:text-2xl text-foreground font-medium mb-3 max-w-2xl"
               aria-live="polite"
             >
               And I'm a{" "}
@@ -70,10 +73,10 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35, duration: 0.6 }}
-              className="text-muted-foreground max-w-xl mb-8 md:mb-10 leading-relaxed text-base md:text-lg"
+              className="text-muted-foreground max-w-2xl mb-7 md:mb-9 leading-relaxed text-base md:text-lg"
             >
-              Data analysis portfolio: projects, internships and dashboards built with
-              SQL, Python, Power BI and Excel — from raw data to decisions.
+              I turn business data into clear dashboards and useful decisions, using
+              SQL, Python, Power BI and Excel.
             </motion.p>
 
             <motion.div
@@ -87,7 +90,10 @@ const HeroSection = () => {
                 size="lg"
                 className="rounded-full px-8 font-medium bg-primary text-primary-foreground hover:bg-primary/85 hover:scale-[1.03] transition-all duration-300"
               >
-                <a href="#contact">Let's Connect</a>
+                <a href="#projects">
+                  Explore projects
+                  <ArrowUpRight aria-hidden="true" />
+                </a>
               </Button>
 
               <Button
@@ -109,18 +115,23 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.7 }}
-            className="flex justify-center lg:justify-end order-first lg:order-none"
+            className="flex justify-center lg:justify-end order-1 lg:order-2"
           >
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
             >
+              <span
+                aria-hidden="true"
+                className="absolute -inset-3 rounded-full border border-border/80"
+              />
               <img
                 src={heroProfile}
                 alt="Premsagar, aspiring Data Analyst skilled in SQL, Power BI and Excel"
                 width={320}
                 height={320}
-                className="w-32 h-32 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full object-cover ring-1 ring-border glow-effect"
+                className="relative w-32 h-32 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-full object-cover ring-1 ring-border glow-effect"
                 loading="eager"
               />
             </motion.div>
@@ -132,16 +143,19 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="container mx-auto px-4 md:px-6 mt-10 md:mt-16"
+        className="container mx-auto px-4 md:px-6 mt-8 md:mt-12"
       >
-        <a
-          href="#about"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Scroll to About section"
-        >
-          <ArrowDown size={18} className="animate-bounce" aria-hidden="true" />
-          Scroll to explore
-        </a>
+        <div className="flex items-center justify-between gap-4 border-t border-border pt-4">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Explore Premsagar's projects"
+          >
+            <ArrowDown size={18} className="animate-bounce" aria-hidden="true" />
+            Selected work
+          </a>
+          <span className="text-xs md:text-sm text-muted-foreground">Based in Andhra Pradesh, India</span>
+        </div>
       </motion.div>
     </section>
   );
