@@ -105,21 +105,39 @@ const ProjectsSection = () => {
                   </a>
                 </div>
 
-                <div className="relative hidden lg:flex aspect-[1.08/1] items-center justify-center overflow-hidden rounded-xl border border-border/80 bg-background" aria-hidden="true">
-                  <div className="absolute inset-x-8 top-7 flex items-center justify-between border-b border-border pb-3">
-                    <span className="font-display text-sm font-semibold text-foreground/70">{project.title.split(" ").slice(0, 2).join(" ")}</span>
-                    <span className="h-2 w-2 rounded-full bg-foreground/40" />
+                <div className="relative order-first flex aspect-[4/3] lg:order-none lg:aspect-[1.08/1] items-center justify-center overflow-hidden rounded-xl border border-border/80 bg-background" aria-hidden="true">
+                  <div className="absolute inset-0 p-5 sm:p-7">
+                    <div className="flex items-center justify-between border-b border-border pb-3">
+                      <div>
+                        <span className="block font-display text-sm font-semibold text-foreground/80">{project.title.split(" ").slice(0, 2).join(" ")}</span>
+                        <span className="mt-1 block text-xs text-muted-foreground">Performance overview</span>
+                      </div>
+                      <span className="rounded-full border border-border px-2.5 py-1 text-[10px] text-muted-foreground">2025</span>
+                    </div>
+                    <div className="mt-4 grid grid-cols-2 gap-3">
+                      <div className="rounded-md border border-border p-3">
+                        <span className="block text-[10px] uppercase tracking-wide text-muted-foreground">Key finding</span>
+                        <span className="mt-1 block font-display text-xl font-bold text-foreground">{index === 0 ? "22%" : index === 1 ? "9.5k+" : "27%"}</span>
+                      </div>
+                      <div className="rounded-md border border-border p-3">
+                        <span className="block text-[10px] uppercase tracking-wide text-muted-foreground">Records analyzed</span>
+                        <span className="mt-1 block font-display text-xl font-bold text-foreground">{index === 0 ? "1,800+" : index === 1 ? "9,551" : "7,000+"}</span>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex h-[34%] min-h-20 items-end gap-2 border-b border-l border-border px-3 pb-0">
+                      {[40, 68, 52, 82, 62, 100, 75, 88].map((height, barIndex) => (
+                        <span
+                          key={barIndex}
+                          className="flex-1 rounded-t-sm bg-secondary transition-[height,background-color] duration-500 group-hover:bg-muted-foreground/60"
+                          style={{ height: `${height}%` }}
+                        />
+                      ))}
+                    </div>
+                    <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground">
+                      <span>Insights by category</span>
+                      <Icon size={17} strokeWidth={1.5} className="text-foreground/50 transition-transform duration-500 group-hover:scale-110" />
+                    </div>
                   </div>
-                  <div className="flex h-32 items-end gap-3 px-8 pt-10">
-                    {[40, 68, 52, 82, 62, 100, 75, 88].map((height, barIndex) => (
-                      <span
-                        key={barIndex}
-                        className="w-5 rounded-t-sm bg-secondary transition-[height,background-color] duration-500 group-hover:bg-muted-foreground/60"
-                        style={{ height: `${height}%` }}
-                      />
-                    ))}
-                  </div>
-                  <Icon size={34} strokeWidth={1.5} className="absolute bottom-6 right-7 text-foreground/50 transition-transform duration-500 group-hover:scale-110" />
                 </div>
 
                 {/* Magic doors cover — two halves slide apart on hover (desktop) */}
