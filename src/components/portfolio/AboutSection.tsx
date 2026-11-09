@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import aboutProfile from "@/assets/hero-profile.png";
 
-const aboutTags = ["SQL", "Power BI", "Excel", "Python", "Tableau", "EDA", "ETL", "KPI Reporting"];
+const aboutTags = ["SQL", "Python", "Power BI", "Advanced Excel", "Tableau", "RFM Segmentation", "Cohort Analysis", "Forecasting"];
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -28,18 +28,18 @@ const AboutSection = () => {
               Data Analyst
             </h2>
             <p className="text-muted-foreground mb-6">
-              Computer Science student · Gooty, Andhra Pradesh, India
+              Computer Science (Data Science) graduate · Andhra Pradesh, India
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              I am a Computer Science student with strong hands-on experience in SQL,
-              Python, Power BI, Tableau and Excel. I specialize in data cleaning,
-              exploratory data analysis (EDA), ETL processes, KPI reporting, and
-              dashboard development.
+              I am a Data Analyst and Computer Science (Data Science) graduate with
+              hands-on experience in SQL, Python, Power BI, Tableau and Advanced Excel.
+              My work spans data cleaning and ETL, interactive dashboards, customer
+              segmentation, cohort analysis and demand forecasting.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              I have a proven ability to analyze large datasets, uncover trends, and
-              deliver actionable insights that support data-driven decision-making
-              across multiple business domains.
+              Across retail, lending, workforce and sales data, I turn large datasets
+              into reliable KPIs and clear recommendations that support better
+              business decisions.
             </p>
 
             <div className="flex flex-wrap gap-2.5 mb-8">
@@ -55,7 +55,7 @@ const AboutSection = () => {
 
             <p className="flex items-start gap-2 text-sm text-muted-foreground">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" aria-hidden="true" />
-              B.Tech – Computer Science &amp; Engineering (Data Science) · CGPA 75.29% · GATES Institute of Technology
+              B.Tech – Computer Science &amp; Engineering (Data Science) · 75.29% · GATES Institute of Technology
             </p>
           </div>
 

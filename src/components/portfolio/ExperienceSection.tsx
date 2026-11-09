@@ -7,9 +7,10 @@ const experiences = [
     period: "Oct 2025 – Mar 2026",
     badge: "APSCHE Certified",
     highlights: [
-      "Partnered with HR and cross-functional teams to define business requirements and validated data quality across employee datasets",
-      "Built Tableau HR Analytics dashboards tracking attrition rates and workforce KPIs to drive strategic retention decisions",
-      "Diagnosed root causes of workforce attrition through structured EDA; automated Excel reporting — reducing manual effort by ~40%",
+      "Partnered with HR and leadership teams to define reporting requirements for workforce and attrition analysis",
+      "Validated and audited employee datasets to improve data quality and reporting reliability",
+      "Developed Tableau dashboards monitoring workforce KPIs and attrition trends to support retention decisions",
+      "Automated recurring Excel reporting workflows, reducing manual reporting effort by approximately 40%",
     ],
   },
   {
@@ -18,9 +19,10 @@ const experiences = [
     period: "May 2025 – Oct 2025",
     badge: "Master Data Analysis Program",
     highlights: [
-      "Applied data governance principles to ETL workflows on 11,000+ records — enforcing data quality checks and validation rules",
-      "Delivered Power BI dashboards with DAX measures tracking sales performance and revenue trends",
-      "Translated ambiguous business problems into SQL-driven customer segmentation analysis informing quarterly ROI decisions",
+      "Applied data quality checks and validation rules to ETL workflows on 11,000+ transactional records",
+      "Built interactive Power BI sales dashboards with DAX measures to track sales performance and revenue trends",
+      "Delivered SQL customer segmentation analyses that informed quarterly business decisions",
+      "Built an Excel sales dashboard with PivotTables, Pivot Charts and slicers to summarize KPIs and trends",
     ],
   },
 ];

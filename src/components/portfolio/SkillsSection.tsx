@@ -17,6 +17,9 @@ const skills = [
   "Pandas",
   "NumPy",
   "Matplotlib",
+  "Seaborn",
+  "Scikit-learn",
+  "XGBoost",
   "Power BI",
   "Plotly",
   "Tableau",
@@ -30,17 +33,24 @@ const skills = [
   "Business Intelligence",
   "DAX",
   "Power Query",
+  "Window Functions",
+  "RFM Segmentation",
+  "Cohort Analysis",
+  "Demand Forecasting",
+  "Jupyter Notebook",
+  "MySQL Workbench",
+  "GitHub",
 ];
 
 const abilities = [
   {
-    title: "Data Cleaning & Preparation",
-    description: "Turning messy raw records into analysis-ready datasets with validation rules and quality checks.",
+    title: "Data Quality & ETL",
+    description: "Building validation checks and reliable ETL workflows for large, analysis-ready datasets.",
     icon: Database,
   },
   {
-    title: "Exploratory Data Analysis",
-    description: "EDA with Python to surface trends, outliers and testable business hypotheses.",
+    title: "Customer & Cohort Analysis",
+    description: "Using RFM segmentation and cohort retention analysis to reveal customer behavior and value.",
     icon: Search,
   },
   {
@@ -49,13 +59,13 @@ const abilities = [
     icon: LayoutDashboard,
   },
   {
-    title: "KPI Reporting",
-    description: "Automated KPI and executive reporting with DAX measures and clean visuals.",
+    title: "Demand Forecasting",
+    description: "Comparing forecasting methods with chronological validation to support inventory planning.",
     icon: LineChart,
   },
   {
     title: "SQL & Data Modeling",
-    description: "Optimized MySQL queries, joins and data models that scale past thousands of records.",
+    description: "Applying MySQL joins, subqueries and window functions to answer business questions at scale.",
     icon: Braces,
   },
   {
@@ -68,13 +78,13 @@ const abilities = [
 const education = [
   {
     degree: "B.Tech – Computer Science & Engineering (Data Science)",
-    institution: "GATES Institute of Technology, Gooty",
+    institution: "GATES Institute of Technology, Andhra Pradesh (JNTUA affiliated)",
     year: "2022 – 2026",
-    score: "CGPA: 75.29%",
+    score: "75.29%",
   },
   {
     degree: "Intermediate (MPC)",
-    institution: "Srisai Jr. College, Gooty",
+    institution: "Sri Sai Jr. College",
     year: "2022",
     score: "71%",
   },
@@ -88,19 +98,16 @@ const education = [
 
 const certifications = [
   {
-    title: "Oracle Analytics Cloud 2025 Certified Professional",
-    description: "Skilled in dashboarding, KPI analysis, data modeling, and cloud-based business intelligence.",
-    certificateUrl: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=323251959OCIEA25OCP",
+    title: "Masters Program in Data Science",
+    description: "FutureSkills Prime · nasscom IT-ITeS SSC · Gold Category · August 2026",
   },
   {
-    title: "Data Analytics Certification",
-    description: "GrowAI - 3 Month Data Analysis Course (March 2025)",
-    certificateUrl: "https://www.growaiedtech.com/verify",
+    title: "Data Science Programme",
+    description: "ExcelR · Certificate of Excellence, Distinction · August 2026",
   },
   {
-    title: "Data Analyst Bootcamp",
-    description: "Udemy - The Complete Data Analyst Bootcamp (Sept 2025)",
-    certificateUrl: "https://ude.my/UC-5862cff0-8b3e-4246-b12a-5b3e0f9ae5bf",
+    title: "Master Data Analysis Program",
+    description: "GrowAI · 2025",
   },
 ];
 
@@ -229,16 +236,6 @@ const SkillsSection = () => {
                     </h3>
                     <p className="text-muted-foreground text-sm">{cert.description}</p>
                   </div>
-                  <a
-                    href={cert.certificateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 self-start md:self-auto px-4 py-2 rounded-full border border-border bg-background text-sm font-medium hover:bg-secondary transition-colors"
-                    aria-label={`View ${cert.title} certificate`}
-                  >
-                    Certificate
-                    <ArrowUpRight size={16} aria-hidden="true" />
-                  </a>
                 </div>
               ))}
             </div>

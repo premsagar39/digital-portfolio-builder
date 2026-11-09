@@ -75,8 +75,8 @@ const HeroSection = () => {
               transition={{ delay: 0.35, duration: 0.6 }}
               className="text-muted-foreground max-w-2xl mb-7 md:mb-9 leading-relaxed text-base md:text-lg"
             >
-              I turn business data into clear dashboards and useful decisions, using
-              SQL, Python, Power BI and Excel.
+              I turn complex data into practical business insights through analysis,
+              forecasting, customer segmentation and clear, decision-ready dashboards.
             </motion.p>
 
             <motion.div
@@ -104,7 +104,7 @@ const HeroSection = () => {
               >
                 <a href="/resume/Premsagar_Resume_2026.pdf" download>
                   <Download />
-                  Download CV
+                  Download resume
                 </a>
               </Button>
             </motion.div>
